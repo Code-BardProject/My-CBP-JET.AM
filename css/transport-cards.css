@@ -1,0 +1,121 @@
+/* Transport Grid and Cards */
+.transport-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.transport-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.transport-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 240, 255, 0.15);
+  border-color: var(--primary);
+}
+
+.transport-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.transport-card:hover::before {
+  opacity: 1;
+}
+
+.transport-card.bike::before {
+  background: linear-gradient(90deg, var(--purple), var(--pink));
+}
+
+.transport-card.car::before {
+  background: linear-gradient(90deg, var(--warning), #fbbf24);
+}
+
+.transport-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 16px;
+  transition: transform 0.3s;
+}
+
+.transport-card:hover .transport-icon {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.transport-icon.scooter {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(37, 99, 235, 0.2));
+}
+
+.transport-icon.bike {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2));
+}
+
+.transport-icon.car {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(251, 191, 36, 0.2));
+}
+
+.transport-status {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.transport-status.available {
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--success);
+}
+
+.transport-status.busy {
+  background: rgba(239, 68, 68, 0.2);
+  color: var(--danger);
+}
+
+.transport-name {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.transport-specs {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-gray);
+  margin-bottom: 16px;
+}
+
+.transport-price {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.transport-price span {
+  font-size: 14px;
+  color: var(--text-gray);
+  font-weight: 400;
+}
