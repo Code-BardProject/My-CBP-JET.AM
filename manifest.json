@@ -1,0 +1,106 @@
+{
+    "name": "My-CBP JET — Прокат электросамокатов",
+    "short_name": "My-CBP JET",
+    "description": "Сервис аренды электросамокатов в Вагаршапате. Быстрая аренда от 5 минут, скорость до 45 км/ч.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a0a0a",
+    "theme_color": "#00f0ff",
+    "orientation": "portrait",
+    "scope": "/",
+    "lang": "ru",
+    "dir": "ltr",
+    "categories": ["travel", "navigation", "transportation"],
+    "icons": [
+        {
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛴</text></svg>",
+            "sizes": "72x72",
+            "type": "image/svg+xml",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛴</text></svg>",
+            "sizes": "96x96",
+            "type": "image/svg+xml",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛴</text></svg>",
+            "sizes": "128x128",
+            "type": "image/svg+xml",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛴</text></svg>",
+            "sizes": "144x144",
+            "type": "image/svg+xml",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛴</text></svg>",
+            "sizes": "152x152",
+            "type": "image/svg+xml",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛴</text></svg>",
+            "sizes": "192x192",
+            "type": "image/svg+xml",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛴</text></svg>",
+            "sizes": "384x384",
+            "type": "image/svg+xml",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛴</text></svg>",
+            "sizes": "512x512",
+            "type": "image/svg+xml",
+            "purpose": "maskable any"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/images/screenshot-narrow.png",
+            "sizes": "750x1334",
+            "type": "image/png",
+            "form_factor": "narrow"
+        },
+        {
+            "src": "/images/screenshot-wide.png",
+            "sizes": "1920x1080",
+            "type": "image/png",
+            "form_factor": "wide"
+        }
+    ],
+    "related_applications": [
+        {
+            "platform": "play",
+            "url": "https://play.google.com/store/apps/details?id=com.mycbp.jet",
+            "id": "com.mycbp.jet"
+        },
+        {
+            "platform": "itunes",
+            "url": "https://apps.apple.com/app/mycbp-jet/idXXXXXXXX"
+        }
+    ],
+    "prefer_related_applications": true,
+    "shortcuts": [
+        {
+            "name": "Карта самокатов",
+            "short_name": "Карта",
+            "description": "Открыть карту с самокатами",
+            "url": "/#map",
+            "icons": [{ "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛴</text></svg>", "sizes": "96x96" }]
+        },
+        {
+            "name": "Личный кабинет",
+            "short_name": "Профиль",
+            "description": "Перейти в личный кабинет",
+            "url": "/login.html",
+            "icons": [{ "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛴</text></svg>", "sizes": "96x96" }]
+        }
+    ]
+}

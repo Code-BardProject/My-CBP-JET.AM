@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Личный кабинет | My-CBP JET — Управление арендой</title>
+    <meta name="description" content="Личный кабинет My-CBP JET. Управляйте арендой электросамокатов, просматривайте историю поездок, баланс, достижения и скидки. Безопасный доступ к вашему аккаунту.">
+    <meta name="keywords" content="личный кабинет самокаты, управление арендой, история поездок, баланс My-CBP, достижения JET">
+    <meta name="author" content="My-CBP">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://My-CBP-JET.AM/uderdashbord.html">
+    <meta property="og:title" content="Личный кабинет | My-CBP JET">
+    <meta property="og:description" content="Управляйте арендой электросамокатов, просматривайте историю поездок и баланс.">
+    <meta property="og:image" content="https://My-CBP-JET.AM/images/og-dashboard.jpg">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="canonical" href="https://My-CBP-JET.AM/uderdashbord.html">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Личный кабинет | My-CBP JET">
+    <meta name="twitter:description" content="Управляйте арендой электросамокатов, просматривайте историю поездок и баланс.">
+    <meta name="twitter:image" content="https://My-CBP-JET.AM/images/og-dashboard.jpg">
+    
+    <!-- PWA Manifest для мобильных браузеров -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛴</text></svg>">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <meta name="msapplication-TileImage" content="/images/ms-tile.png">
+    
+    <!-- ESX Extended Security Protection -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="msapplication-TileColor" content="#0a0a0a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="My-CBP JET Dashboard">
+    
+    <!-- Security Meta Tags -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://cdnjs.cloudflare.com https://unpkg.com https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https:; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(self), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=()">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/uderdashbord.css">
+    <link rel="stylesheet" href="css/transport-cards.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lavishly+Yours&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/uderdashbord.js" defer></script>
+</head>
+<body>
+    <div class="gradient-bg"></div>
+    <nav class="sidebar">
+        <div class="logoeffect">
+            <div class="sidebar-logo">
+                <div class="logo-icon">
+                    
+                    <i class="fa-solid fa-bolt">
+                        <b>My<span>-</span>CBP JET</b>
+                    </i>
+                </div>
+                <div class="logo-text">My<span>-</span>CBP JET</div>
+            </div>
+            <button class="sidebar-close-btn" onclick="closeSidebar()" aria-label="Закрыть меню">
+                <i class="fa-solid fa-times"> </i>
+            </button>
+        </div>
+        <div class="nav-section">
+
+            <div class="mobilemenueffectform">
+                <button class="header-btn" onclick="showNotifications()">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <button class="header-btn" onclick="toggleTheme()">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+
+            <div class="nav-title">Транспорт</div>
+            <button class="nav-item" onclick="showSection('scooters')"><i class="fa-solid fa-person-skating"></i> Самокаты</button>
+            <button class="nav-item" onclick="showSection('bikes')"><i class="fa-solid fa-bicycle"></i> Велосипеды</button>
+            <button class="nav-item" onclick="showSection('cars')"><i class="fa-solid fa-car"></i> Автомобили</button>
+            <button class="nav-item" onclick="showSection('all-vehicles')"><i class="fa-solid fa-layer-group"></i> Весь транспорт</button>
+        </div>
+        <div class="nav-section">
+            <div class="nav-title">Главное меню</div>
+            <button class="nav-item active" onclick="showSection('overview')"><i class="fa-solid fa-chart-pie"></i> Обзор</button>
+            <button class="nav-item" onclick="showSection('activity')"><i class="fa-solid fa-route"></i> Мои поездки</button>
+            <button class="nav-item" onclick="showSection('achievements')"><i class="fa-solid fa-trophy"></i> Достижения</button>
+            <button class="nav-item" onclick="showSection('wallet')"><i class="fa-solid fa-wallet"></i> Кошелёк</button>
+        </div>
+        <div class="nav-section">
+            <div class="nav-title">Настройки</div>
+            <button class="nav-item" onclick="showSection('profile')"><i class="fa-solid fa-user"></i> Профиль</button>
+            <button class="nav-item" onclick="showSection('notifications')"><i class="fa-solid fa-bell"></i> Уведомления<span class="nav-badge">3</span></button>
+            <button class="nav-item" onclick="showSection('security')"><i class="fa-solid fa-shield-halved"></i> Безопасность</button>
+        </div>
+        <div class="sidebar-footer">
+            <div class="user-mini" onclick="showSection('profile')">
+                <div class="user-avatar">👤</div>
+                <div class="user-info"><h4 id="sidebar-user-name">Тарлан К.</h4><p>Premium Gold</p></div>
+            </div>
+        </div>
+    </nav>
+    <main class="main-content">
+        <header class="header">
+            <div class="header-left">
+                <h1>👋 Добро пожаловать, <span id="header-user-name">Тарлан</span>!</h1>
+                <p>Вот ваша статистика на сегодня</p>
+            </div>
+            <div class="header-actions">
+                <div class="search-box">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" id="transport-search" placeholder="Поиск транспорта..." onkeyup="searchTransport(this.value)">
+                </div>
+                <div class="tabeffectform">
+                <button class="header-btn" onclick="showNotifications()">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <button class="header-btn" onclick="toggleTheme()">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                 
+                </div>
+                <label class="buttons__burger" for="burger">
+                    <input type="checkbox" id="burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </div>
+        </header>
+
+        <!-- СЕКЦИЯ 1: ОБЗОР -->
+        <div id="section-overview" class="section-content active">
+            <div class="level-progress">
+                <div class="level-header">
+                    <div class="level-badge">
+                        <div class="level-icon">🏆</div>
+                        <div class="level-info"><h3>Gold Rider</h3><p>Уровень 12 из 50</p></div>
+                    </div>
+                    <div class="level-reward"><div class="amount">+25%</div><p>кэшбэк бонус</p></div>
+                </div>
+                <div class="xp-bar"><div class="xp-fill" style="width: 75%"></div></div>
+                <div class="xp-info"><span>2,450 XP</span><span>3,200 XP до Platinum</span></div>
+            </div>
+            <div class="rental-status">
+                <div class="rental-icon pulse">🛴</div>
+                <div class="rental-info">
+                    <h3>🚀 Активная аренда JET Pro #8743</h3>
+                    <p>Самокат ждёт вас на ул. Маштоца, 15</p>
+                    <div class="rental-timer">
+                        <div class="timer-item"><div class="timer-value" id="timer-m">12</div><div class="timer-label">мин</div></div>
+                        <div class="timer-item"><div class="timer-value" id="timer-s">45</div><div class="timer-label">сек</div></div>
+                    </div>
+                    <div class="rental-buttons">
+                        <button class="btn btn-primary" onclick="extendRental()"><i class="fa-solid fa-clock"></i> Продлить +10 мин</button>
+                        <button class="btn btn-secondary" onclick="endRental()"><i class="fa-solid fa-check"></i> Завершить</button>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-grid">
+                <div class="stat-card"><div class="stat-header"><div class="stat-icon"><i class="fa-solid fa-route"></i></div></div><div class="stat-value">127</div><div class="stat-label">Поездок в этом месяце</div></div>
+                <div class="stat-card purple"><div class="stat-header"><div class="stat-icon purple"><i class="fa-solid fa-coins"></i></div></div><div class="stat-value">8,420</div><div class="stat-label">₽ сэкономлено</div></div>
+                <div class="stat-card success"><div class="stat-header"><div class="stat-icon success"><i class="fa-solid fa-leaf"></i></div></div><div class="stat-value">42.5</div><div class="stat-label">кг CO₂ сэкономлено</div></div>
+                <div class="stat-card warning"><div class="stat-header"><div class="stat-icon warning"><i class="fa-solid fa-bolt"></i></div></div><div class="stat-value">1,847</div><div class="stat-label">км пройдено</div></div>
+            </div>
+            <div class="content-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> Активность за неделю</h3>
+                        <div class="card-actions">
+                            <button class="btn-icon" onclick="changeChart('week')"><i class="fa-solid fa-calendar-week"></i></button>
+                        </div>
+                    </div>
+                    <div class="activity-chart"><canvas id="activityChart"></canvas></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-trophy"></i> Достижения</h3></div>
+                    <div class="achievements-list">
+                        <div class="achievement-item"><div class="achievement-icon platinum">🚀</div><div class="achievement-info"><h4>Скоростной демон</h4><p>Развивайте скорость 40+ км/ч</p></div><div class="achievement-progress"><div class="value">85%</div><div class="progress-bar"><div class="progress-fill" style="width: 85%"></div></div></div></div>
+                        <div class="achievement-item"><div class="achievement-icon gold">💎</div><div class="achievement-info"><h4>Марафонец</h4><p>Пройдите 100 км за месяц</p></div><div class="achievement-progress"><div class="value">62%</div><div class="progress-bar"><div class="progress-fill" style="width: 62%"></div></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- СЕКЦИЯ 2: САМОКАТЫ -->
+        <div id="section-scooters" class="section-content">
+            <button class="back-btn" onclick="showSection('overview')"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+            <h2 class="section-title"><i class="fa-solid fa-person-skating"></i> Самокаты</h2>
+            <div class="dashboard-grid" style="margin-bottom: 24px;">
+                <div class="stat-card"><div class="stat-header"><div class="stat-icon"><i class="fa-solid fa-bolt"></i></div></div><div class="stat-value">4</div><div class="stat-label">Всего самокатов</div></div>
+                <div class="stat-card success"><div class="stat-header"><div class="stat-icon success"><i class="fa-solid fa-check"></i></div></div><div class="stat-value">3</div><div class="stat-label">Свободны</div></div>
+                <div class="stat-card warning"><div class="stat-header"><div class="stat-icon warning"><i class="fa-solid fa-clock"></i></div></div><div class="stat-value">1</div><div class="stat-label">В аренде</div></div>
+                <div class="stat-card purple"><div class="stat-header"><div class="stat-icon purple"><i class="fa-solid fa-location-dot"></i></div></div><div class="stat-value">2</div><div class="stat-label">Рядом с вами</div></div>
+            </div>
+            <div class="card" style="margin-bottom: 24px;">
+                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-map"></i> Карта самокатов</h3></div>
+                <div id="map-scooters" style="height: 650px; border-radius: 16px; z-index: 1;"></div>
+            </div>
+            <div class="transport-grid">
+                <div class="transport-card"><span class="transport-status available">Свободен</span><div class="transport-icon scooter">🛴</div><h3 class="transport-name">JET Pro #8743</h3><div class="transport-specs"><span>⚡ 45 км/ч</span><span>🔋 85%</span></div><div class="transport-price">89 ₽ <span>/ 10 мин</span></div></div>
+                <div class="transport-card"><span class="transport-status available">Свободен</span><div class="transport-icon scooter">🛴</div><h3 class="transport-name">JET Lite #3921</h3><div class="transport-specs"><span>⚡ 25 км/ч</span><span>🔋 92%</span></div><div class="transport-price">49 ₽ <span>/ 10 мин</span></div></div>
+                <div class="transport-card"><span class="transport-status busy">Занят</span><div class="transport-icon scooter">🛴</div><h3 class="transport-name">JET Pro #1124</h3><div class="transport-specs"><span>⚡ 45 км/ч</span><span>🔋 60%</span></div><div class="transport-price">89 ₽ <span>/ 10 мин</span></div></div>
+            </div>
+        </div>
+
+        <!-- СЕКЦИЯ 3: ВЕЛОСИПЕДЫ -->
+        <div id="section-bikes" class="section-content">
+            <button class="back-btn" onclick="showSection('overview')"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+            <h2 class="section-title"><i class="fa-solid fa-bicycle"></i> Велосипеды</h2>
+            <div class="dashboard-grid" style="margin-bottom: 24px;">
+                <div class="stat-card"><div class="stat-header"><div class="stat-icon"><i class="fa-solid fa-bicycle"></i></div></div><div class="stat-value">3</div><div class="stat-label">Всего велосипедов</div></div>
+                <div class="stat-card success"><div class="stat-header"><div class="stat-icon success"><i class="fa-solid fa-check"></i></div></div><div class="stat-value">2</div><div class="stat-label">Свободны</div></div>
+                <div class="stat-card warning"><div class="stat-header"><div class="stat-icon warning"><i class="fa-solid fa-clock"></i></div></div><div class="stat-value">1</div><div class="stat-label">В аренде</div></div>
+            </div>
+            <div class="card" style="margin-bottom: 24px;">
+                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-map"></i> Карта велосипедов</h3></div>
+                <div id="map-bikes" style="height: 650px; border-radius: 16px; z-index: 1;"></div>
+            </div>
+            <div class="transport-grid">
+                <div class="transport-card bike"><span class="transport-status available">Свободен</span><div class="transport-icon bike">🚲</div><h3 class="transport-name">JET Bike #B-452</h3><div class="transport-specs"><span>⚡ 25 км/ч</span><span>🔋 100%</span></div><div class="transport-price">150 ₽ <span>/ час</span></div></div>
+                <div class="transport-card bike"><span class="transport-status busy">Занят</span><div class="transport-icon bike">🚲</div><h3 class="transport-name">JET MTB #B-231</h3><div class="transport-specs"><span>⚡ 30 км/ч</span><span>🔋 88%</span></div><div class="transport-price">200 ₽ <span>/ час</span></div></div>
+            </div>
+        </div>
+
+        <!-- СЕКЦИЯ 4: АВТОМОБИЛИ -->
+        <div id="section-cars" class="section-content">
+            <button class="back-btn" onclick="showSection('overview')"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+            <h2 class="section-title"><i class="fa-solid fa-car"></i> Автомобили</h2>
+            <div class="dashboard-grid" style="margin-bottom: 24px;">
+                <div class="stat-card"><div class="stat-header"><div class="stat-icon"><i class="fa-solid fa-car"></i></div></div><div class="stat-value">3</div><div class="stat-label">Всего автомобилей</div></div>
+                <div class="stat-card success"><div class="stat-header"><div class="stat-icon success"><i class="fa-solid fa-check"></i></div></div><div class="stat-value">2</div><div class="stat-label">Свободны</div></div>
+                <div class="stat-card warning"><div class="stat-header"><div class="stat-icon warning"><i class="fa-solid fa-clock"></i></div></div><div class="stat-value">1</div><div class="stat-label">В аренде</div></div>
+            </div>
+            <div class="card" style="margin-bottom: 24px;">
+                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-map"></i> Карта автомобилей</h3></div>
+                <div id="map-cars" style="height: 650px; border-radius: 16px; z-index: 1;"></div>
+            </div>
+            <div class="transport-grid">
+                <div class="transport-card car"><span class="transport-status available">Свободен</span><div class="transport-icon car">🚗</div><h3 class="transport-name">Hyundai Solaris #C-456</h3><div class="transport-specs"><span>⛽ 85%</span><span>🚗 Седан</span></div><div class="transport-price">2,800 ₽ <span>/ день</span></div></div>
+                <div class="transport-card car"><span class="transport-status busy">Занят</span><div class="transport-icon car">🚗</div><h3 class="transport-name">KIA Rio #C-789</h3><div class="transport-specs"><span>⛽ 75%</span><span>🚗 Седан</span></div><div class="transport-price">2,500 ₽ <span>/ день</span></div></div>
+            </div>
+        </div>
+
+        <!-- СЕКЦИЯ 5: ВЕСЬ ТРАНСПОРТ -->
+        <div id="section-all-vehicles" class="section-content">
+            <button class="back-btn" onclick="showSection('overview')"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+            <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> Весь транспорт</h2>
+            <div class="dashboard-grid" style="margin-bottom: 24px;">
+                <div class="stat-card"><div class="stat-header"><div class="stat-icon"><i class="fa-solid fa-bolt"></i></div></div><div class="stat-value">10</div><div class="stat-label">Всего транспорта</div></div>
+                <div class="stat-card success"><div class="stat-header"><div class="stat-icon success"><i class="fa-solid fa-check"></i></div></div><div class="stat-value">7</div><div class="stat-label">Свободно</div></div>
+                <div class="stat-card warning"><div class="stat-header"><div class="stat-icon warning"><i class="fa-solid fa-clock"></i></div></div><div class="stat-value">3</div><div class="stat-label">В аренде</div></div>
+                <div class="stat-card purple"><div class="stat-header"><div class="stat-icon purple"><i class="fa-solid fa-map-location-dot"></i></div></div><div class="stat-value">4</div><div class="stat-label">Рядом с вами</div></div>
+            </div>
+            <div class="card" style="margin-bottom: 24px;">
+                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-map"></i> Общая карта транспорта</h3></div>
+                <div id="map-all" style="height: 650px; border-radius: 16px; z-index: 1;"></div>
+            </div>
+            <div class="content-grid">
+                <div class="card" onclick="showSection('scooters')" style="cursor: pointer;">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(0,240,255,0.2), rgba(37,99,235,0.2)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 32px;">🛴</div>
+                        <div><h3 style="font-size: 20px; font-weight: 700;">Самокаты</h3><p style="color: var(--text-gray);">4 шт. • 3 свободны</p></div>
+                    </div>
+                </div>
+                <div class="card" onclick="showSection('bikes')" style="cursor: pointer;">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(236,72,153,0.2)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 32px;">🚲</div>
+                        <div><h3 style="font-size: 20px; font-weight: 700;">Велосипеды</h3><p style="color: var(--text-gray);">3 шт. • 2 свободны</p></div>
+                    </div>
+                </div>
+                <div class="card" onclick="showSection('cars')" style="cursor: pointer;">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(251,191,36,0.2)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 32px;">🚗</div>
+                        <div><h3 style="font-size: 20px; font-weight: 700;">Автомобили</h3><p style="color: var(--text-gray);">3 шт. • 2 свободны</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- СЕКЦИЯ 6: МОИ ПОЕЗДКИ -->
+        <div id="section-activity" class="section-content">
+            <button class="back-btn" onclick="showSection('overview')"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+            <h2 class="section-title"><i class="fa-solid fa-route"></i> Мои поездки</h2>
+            <div class="dashboard-grid" style="margin-bottom: 24px;">
+                <div class="stat-card"><div class="stat-header"><div class="stat-icon"><i class="fa-solid fa-route"></i></div></div><div class="stat-value">127</div><div class="stat-label">Всего поездок</div></div>
+                <div class="stat-card success"><div class="stat-header"><div class="stat-icon success"><i class="fa-solid fa-road"></i></div></div><div class="stat-value">1,847</div><div class="stat-label">км пройдено</div></div>
+                <div class="stat-card purple"><div class="stat-header"><div class="stat-icon purple"><i class="fa-solid fa-clock"></i></div></div><div class="stat-value">86</div><div class="stat-label">часов в пути</div></div>
+                <div class="stat-card warning"><div class="stat-header"><div class="stat-icon warning"><i class="fa-solid fa-fire"></i></div></div><div class="stat-value">42,500</div><div class="stat-label">калорий сожжено</div></div>
+            </div>
+            <div class="card">
+                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-list"></i> История поездок</h3></div>
+                <div class="trips-list">
+                    <div class="trip-item" style="display: flex; align-items: center; gap: 16px; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 16px; margin-bottom: 12px;">
+                        <div style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px;">🛴</div>
+                        <div style="flex: 1;"><h4 style="font-size: 16px; font-weight: 600;">JET Pro #8743</h4><p style="font-size: 13px; color: var(--text-gray);">ул. Маштоца → пр. Тигран Мец</p></div>
+                        <div style="text-align: right;"><div style="font-size: 18px; font-weight: 700; color: var(--primary);">89 ₽</div><div style="font-size: 12px; color: var(--text-muted);">Сегодня</div></div>
+                    </div>
+                    <div class="trip-item" style="display: flex; align-items: center; gap: 16px; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 16px; margin-bottom: 12px;">
+                        <div style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--purple), var(--pink)); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px;">🚲</div>
+                        <div style="flex: 1;"><h4 style="font-size: 16px; font-weight: 600;">JET Bike #B-452</h4><p style="font-size: 13px; color: var(--text-gray);">ул. Абовяна → парк Победы</p></div>
+                        <div style="text-align: right;"><div style="font-size: 18px; font-weight: 700; color: var(--primary);">375 ₽</div><div style="font-size: 12px; color: var(--text-muted);">Вчера</div></div>
+                    </div>
+                    <div class="trip-item" style="display: flex; align-items: center; gap: 16px; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 16px; margin-bottom: 12px;">
+                        <div style="width: 56px; height: 56px; background: linear-gradient(135deg, var(--warning), #fbbf24); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px;">🚗</div>
+                        <div style="flex: 1;"><h4 style="font-size: 16px; font-weight: 600;">Toyota Camry #C-123</h4><p style="font-size: 13px; color: var(--text-gray);">ТЦ Метрополис → аэропорт</p></div>
+                        <div style="text-align: right;"><div style="font-size: 18px; font-weight: 700; color: var(--primary);">3,500 ₽</div><div style="font-size: 12px; color: var(--text-muted);">2 дня назад</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- СЕКЦИЯ 7: ДОСТИЖЕНИЯ -->
+        <div id="section-achievements" class="section-content">
+            <button class="back-btn" onclick="showSection('overview')"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+            <h2 class="section-title"><i class="fa-solid fa-trophy"></i> Достижения</h2>
+            <div class="dashboard-grid" style="margin-bottom: 24px;">
+                <div class="stat-card"><div class="stat-header"><div class="stat-icon"><i class="fa-solid fa-medal"></i></div></div><div class="stat-value">12</div><div class="stat-label">Получено достижений</div></div>
+                <div class="stat-card success"><div class="stat-header"><div class="stat-icon success"><i class="fa-solid fa-star"></i></div></div><div class="stat-value">3</div><div class="stat-label">В процессе</div></div>
+                <div class="stat-card purple"><div class="stat-header"><div class="stat-icon purple"><i class="fa-solid fa-gem"></i></div></div><div class="stat-value">2,450</div><div class="stat-label">XP получено</div></div>
+                <div class="stat-card warning"><div class="stat-header"><div class="stat-icon warning"><i class="fa-solid fa-crown"></i></div></div><div class="stat-value">Gold</div><div class="stat-label">Текущий ранг</div></div>
+            </div>
+            <div class="card">
+                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-list"></i> Все достижения</h3></div>
+                <div class="achievements-list">
+                    <div class="achievement-item"><div class="achievement-icon platinum">🚀</div><div class="achievement-info"><h4>Скоростной демон</h4><p>Развивайте скорость 40+ км/ч</p></div><div class="achievement-progress"><div class="value">85%</div><div class="progress-bar"><div class="progress-fill" style="width: 85%"></div></div></div></div>
+                    <div class="achievement-item"><div class="achievement-icon gold">💎</div><div class="achievement-info"><h4>Марафонец</h4><p>Пройдите 100 км за месяц</p></div><div class="achievement-progress"><div class="value">62%</div><div class="progress-bar"><div class="progress-fill" style="width: 62%"></div></div></div></div>
+                    <div class="achievement-item"><div class="achievement-icon">🌟</div><div class="achievement-info"><h4>Эко-герой</h4><p>Сэкономьте 50 кг CO₂</p></div><div class="achievement-progress"><div class="value">91%</div><div class="progress-bar"><div class="progress-fill" style="width: 91%"></div></div></div></div>
+                    <div class="achievement-item"><div class="achievement-icon">🌙</div><div class="achievement-info"><h4>Ночной гонщик</h4><p>10 поездок после 22:00</p></div><div class="achievement-progress"><div class="value">70%</div><div class="progress-bar"><div class="progress-fill" style="width: 70%"></div></div></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- СЕКЦИЯ 8: КОШЕЛЁК -->
+        <div id="section-wallet" class="section-content">
+            <button class="back-btn" onclick="showSection('overview')"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+            <h2 class="section-title"><i class="fa-solid fa-wallet"></i> Кошелёк</h2>
+            <div class="dashboard-grid" style="margin-bottom: 24px;">
+                <div class="stat-card"><div class="stat-header"><div class="stat-icon"><i class="fa-solid fa-wallet"></i></div></div><div class="stat-value">2,450</div><div class="stat-label">₽ на счету</div></div>
+                <div class="stat-card success"><div class="stat-header"><div class="stat-icon success"><i class="fa-solid fa-coins"></i></div></div><div class="stat-value">8,420</div><div class="stat-label">₽ сэкономлено</div></div>
+                <div class="stat-card purple"><div class="stat-header"><div class="stat-icon purple"><i class="fa-solid fa-gift"></i></div></div><div class="stat-value">3,600</div><div class="stat-label">₽ реферальных</div></div>
+                <div class="stat-card warning"><div class="stat-header"><div class="stat-icon warning"><i class="fa-solid fa-percent"></i></div></div><div class="stat-value">+25%</div><div class="stat-label">кэшбэк Gold</div></div>
+            </div>
+            <div class="content-grid">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-credit-card"></i> Способы оплаты</h3></div>
+                    <div style="padding: 20px;">
+                        <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: rgba(255,255,255,0.05); border-radius: 12px; margin-bottom: 12px;">
+                            <i class="fa-brands fa-cc-visa" style="font-size: 32px; color: var(--primary);"></i>
+                            <div><h4>Visa •••• 4242</h4><p style="color: var(--text-gray); font-size: 13px;">Основная карта</p></div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 16px; padding: 16px; background: rgba(255,255,255,0.05); border-radius: 12px;">
+                            <i class="fa-brands fa-cc-mastercard" style="font-size: 32px; color: var(--purple);"></i>
+                            <div><h4>Mastercard •••• 8888</h4><p style="color: var(--text-gray); font-size: 13px;">Резервная карта</p></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" style="width: calc(100% - 40px); margin: 0 20px 20px;"><i class="fa-solid fa-plus"></i> Добавить карту</button>
+                </div>
+                <div class="card">
+                    <div style="padding: 24px; background: linear-gradient(135deg, var(--primary), var(--purple)); border-radius: 16px; text-align: center;">
+                        <h3 style="font-size: 22px; margin-bottom: 8px;">🎁 Приведи друга</h3>
+                        <p style="opacity: 0.9; margin-bottom: 16px;">Получите 300 ₽ за каждого друга</p>
+                        <div style="padding: 12px 20px; background: rgba(255,255,255,0.2); border-radius: 12px; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; gap: 12px; cursor: pointer;">
+                            <span style="font-family: monospace; font-size: 18px;">JET-TARLAN-300</span>
+                            <i class="fa-solid fa-copy"></i>
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+                            <div><h4>12</h4><p style="font-size: 12px; opacity: 0.7;">Приглашено</p></div>
+                            <div><h4>8</h4><p style="font-size: 12px; opacity: 0.7;">Активных</p></div>
+                            <div><h4>3,600 ₽</h4><p style="font-size: 12px; opacity: 0.7;">Заработано</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- СЕКЦИЯ 9: ПРОФИЛЬ -->
+        <div id="section-profile" class="section-content">
+            <button class="back-btn" onclick="showSection('overview')"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+            <h2 class="section-title"><i class="fa-solid fa-user"></i> Профиль</h2>
+            <div class="card" style="margin-bottom: 24px;">
+                <div style="display: flex; align-items: center; gap: 24px; padding: 24px;">
+                    <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--primary), var(--purple)); border-radius: 24px; display: flex; align-items: center; justify-content: center; font-size: 48px;">👤</div>
+                    <div>
+                        <h3 style="font-size: 28px; font-weight: 700; margin-bottom: 8px;" id="profile-user-name">Тарлан К.</h3>
+                        <p style="color: var(--text-gray); font-size: 16px; margin-bottom: 8px;" id="profile-user-email">tarlan@example.com</p>
+                        <span style="background: linear-gradient(135deg, var(--warning), #fbbf24); color: #000; padding: 6px 16px; border-radius: 20px; font-size: 14px; font-weight: 600;">🏆 Gold Rider</span>
+                    </div>
+                </div>
+            </div>
+            <div class="content-grid">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-pen-to-square"></i> Редактировать профиль</h3></div>
+                    <div style="padding: 20px;">
+                        <div style="margin-bottom: 16px;"><label style="display: block; margin-bottom: 8px; color: var(--text-gray);">Имя</label><input type="text" id="profile-edit-name" value="Тарлан К." style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white;"></div>
+                        <div style="margin-bottom: 16px;"><label style="display: block; margin-bottom: 8px; color: var(--text-gray);">Email</label><input type="email" id="profile-edit-email" value="tarlan@example.com" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white;"></div>
+                        <button class="btn btn-primary" style="width: 100%;"><i class="fa-solid fa-save"></i> Сохранить изменения</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-chart-simple"></i> Статистика аккаунта</h3></div>
+                    <div style="padding: 20px;">
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+                            <div class="stat-card"><div class="stat-value">127</div><div class="stat-label">Поездок</div></div>
+                            <div class="stat-card"><div class="stat-value">1,847</div><div class="stat-label">Км</div></div>
+                            <div class="stat-card"><div class="stat-value">86</div><div class="stat-label">Часов</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 24px;">
+                <button class="btn btn-secondary" onclick="logout()" style="width: 100%; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border: none;">
+                    <i class="fa-solid fa-right-from-bracket"></i> Выйти из аккаунта
+                </button>
+            </div>
+        </div>
+
+        <!-- СЕКЦИЯ 10: УВЕДОМЛЕНИЯ -->
+        <div id="section-notifications" class="section-content">
+            <button class="back-btn" onclick="showSection('overview')"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+            <h2 class="section-title"><i class="fa-solid fa-bell"></i> Уведомления</h2>
+            <div class="card" style="margin-bottom: 24px;">
+                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-sliders"></i> Настройки уведомлений</h3></div>
+                <div style="padding: 20px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><div><h4>Push-уведомления</h4><p style="color: var(--text-gray); font-size: 13px;">Уведомления на телефон</p></div><input type="checkbox" checked style="width: 20px; height: 20px;"></div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.1);"><div><h4>Email-уведомления</h4><p style="color: var(--text-gray); font-size: 13px;">Рассылка на email</p></div><input type="checkbox" checked style="width: 20px; height: 20px;"></div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px 0;"><div><h4>Скидки и акции</h4><p style="color: var(--text-gray); font-size: 13px;">Специальные предложения</p></div><input type="checkbox" checked style="width: 20px; height: 20px;"></div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-list"></i> История уведомлений</h3></div>
+                <div style="padding: 20px;">
+                    <div style="display: flex; gap: 16px; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px; margin-bottom: 12px;"><div style="width: 40px; height: 40px; background: var(--primary); border-radius: 10px; display: flex; align-items: center; justify-content: center;">🛴</div><div><h4>Самокат ждёт!</h4><p style="color: var(--text-gray); font-size: 13px;">JET Pro #8743 доступен рядом</p></div></div>
+                    <div style="display: flex; gap: 16px; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px;"><div style="width: 40px; height: 40px; background: var(--success); border-radius: 10px; display: flex; align-items: center; justify-content: center;">✅</div><div><h4>Поездка завершена</h4><p style="color: var(--text-gray); font-size: 13px;">Вы получили +50 ₽ кэшбэка</p></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- СЕКЦИЯ 11: БЕЗОПАСНОСТЬ -->
+        <div id="section-security" class="section-content">
+            <button class="back-btn" onclick="showSection('overview')"><i class="fa-solid fa-arrow-left"></i> Назад</button>
+            <h2 class="section-title"><i class="fa-solid fa-shield-halved"></i> Безопасность</h2>
+            <div class="dashboard-grid" style="margin-bottom: 24px;">
+                <div class="stat-card success"><div class="stat-header"><div class="stat-icon success"><i class="fa-solid fa-shield-check"></i></div></div><div class="stat-value">✓</div><div class="stat-label">Аккаунт защищён</div></div>
+                <div class="stat-card"><div class="stat-header"><div class="stat-icon"><i class="fa-solid fa-key"></i></div></div><div class="stat-value">2FA</div><div class="stat-label">Включена</div></div>
+            </div>
+            <div class="content-grid">
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-lock"></i> Сменить пароль</h3></div>
+                    <div style="padding: 20px;">
+                        <div style="margin-bottom: 16px;"><label style="display: block; margin-bottom: 8px; color: var(--text-gray);">Текущий пароль</label><input type="password" placeholder="••••••••" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white;"></div>
+                        <div style="margin-bottom: 16px;"><label style="display: block; margin-bottom: 8px; color: var(--text-gray);">Новый пароль</label><input type="password" placeholder="••••••••" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white;"></div>
+                        <button class="btn btn-primary" style="width: 100%;"><i class="fa-solid fa-key"></i> Обновить пароль</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><h3 class="card-title"><i class="fa-solid fa-mobile-screen"></i> Двухфакторная аутентификация</h3></div>
+                    <div style="padding: 20px;">
+                        <p style="color: var(--text-gray); margin-bottom: 16px;">Защитите аккаунт дополнительным уровнем безопасности</p>
+                        <div style="display: flex; align-items: center; gap: 12px; padding: 16px; background: rgba(16,185,129,0.1); border-radius: 12px; margin-bottom: 16px;">
+                            <i class="fa-solid fa-circle-check" style="color: var(--success); font-size: 24px;"></i>
+                            <span>2FA включена (SMS)</span>
+                        </div>
+                        <button class="btn btn-secondary" style="width: 100%;"><i class="fa-solid fa-shield"></i> Настроить 2FA</button>
+            </div>
+        </div>
+
+    </main>
+    <div class="toast" id="toast">
+        <div class="toast-icon"><i class="fa-solid fa-check"></i></div>
+        <div class="toast-content"><h4>Успешно!</h4><p id="toast-message">Действие выполнено</p></div>
+    </div>
+
+</body>
+</html>

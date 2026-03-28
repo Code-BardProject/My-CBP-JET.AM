@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Вход — Личный кабинет | My-CBP JET</title>
+    <meta name="description" content="Вход в личный кабинет My-CBP JET. Управляйте арендой самокатов, просматривайте историю поездок, баланс и скидки. Безопасный вход в аккаунт.">
+    <meta name="keywords" content="вход в личный кабинет, авторизация My-CBP, scooter rental login, самокаты личный кабинет">
+    <meta name="author" content="My-CBP">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://My-CBP-JET.AM/login.html">
+    <meta property="og:title" content="Вход — Личный кабинет | My-CBP JET">
+    <meta property="og:description" content="Вход в личный кабинет My-CBP JET. Управляйте арендой самокатов.">
+    <meta property="og:image" content="https://My-CBP-JET.AM/images/og-image.jpg">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="canonical" href="https://My-CBP-JET.AM/login.html">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Вход — Личный кабинет | My-CBP JET">
+    <meta name="twitter:description" content="Вход в личный кабинет My-CBP JET. Управляйте арендой самокатов.">
+    <meta name="twitter:image" content="https://My-CBP-JET.AM/images/og-image.jpg">
+    
+    <!-- PWA Manifest для мобильных браузеров -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛴</text></svg>">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <meta name="msapplication-TileImage" content="/images/ms-tile.png">
+
+    <!-- ESX Extended Security Protection -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="msapplication-TileColor" content="#0a0a0a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="My-CBP JET Login">
+    
+    <!-- Security Meta Tags -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https:; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(self), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=()">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .particles {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 26rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(1rem);
+            -webkit-backdrop-filter: blur(1rem);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 1.5rem;
+            box-shadow: 0 0.5rem 2rem rgba(0, 240, 255, 0.1);
+            height: auto;
+            min-height: 22rem;
+            transition: min-height 0.4s ease;
+        }
+
+        .logo-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #00f0ff, #2563eb);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 240, 255, 0.4);
+        }
+
+        .logo-icon i {
+            font-size: 22px;
+            color: white;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-family: "Fredericka the Great", serif;
+            font-weight: 400;
+            color: white;
+        }
+
+        .logo-text span {
+            color: #00f0ff;
+        }
+
+        .toggle {
+            display: flex;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 3.125rem;
+            padding: 0.375rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 3.125rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .toggle-btn.active {
+            background: linear-gradient(135deg, #00f0ff, #2563eb);
+            color: #0a0a0a;
+            box-shadow: 0 0.25rem 0.75rem rgba(0, 240, 255, 0.3);
+        }
+
+        .form-wrapper {
+            position: relative;
+            height: auto;
+            min-height: 18rem;
+        }
+
+        .form {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: all 0.55s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            opacity: 0;
+            transform: translateX(3.75rem);
+            pointer-events: none;
+        }
+
+        .form.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+        }
+
+        .form.hidden {
+            transform: translateX(-3.75rem);
+            opacity: 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.03rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.875rem 1rem 0.875rem 3rem;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 0.875rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: rgba(0, 240, 255, 0.5);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 0.1875rem rgba(0, 240, 255, 0.2);
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(0, 240, 255, 0.7);
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            padding: 0.875rem;
+            background: linear-gradient(135deg, #00f0ff, #2563eb);
+            color: #0a0a0a;
+            border: none;
+            border-radius: 0.875rem;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-0.125rem);
+            box-shadow: 0 0.625rem 1.5625rem rgba(0, 240, 255, 0.4);
+        }
+
+        .link {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .link a {
+            color: #00f0ff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 1.5rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #00f0ff;
+        }
+
+        @media (max-height: 32rem) {
+            .container {
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+        }
+
+        @media (max-width: 30rem) {
+            .container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles-js"></div>
+
+    <div class="container">
+        <div class="logo-header">
+            <div class="logo-icon">
+                <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div class="logo-text">My<span>-</span>CBP JET</div>
+        </div>
+
+        <div class="toggle">
+            <button class="toggle-btn active" data-form="login">Вход</button>
+            <button class="toggle-btn" data-form="register">Регистрация</button>
+        </div>
+
+        <div class="form-wrapper">
+            <form class="form active" id="login">
+                <h2>Добро пожаловать</h2>
+                <p class="subtitle">Войдите в свой аккаунт</p>
+                <div class="input-group">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="login-email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="login-password" placeholder="Пароль" required>
+                </div>
+                <button type="submit" class="btn">Войти</button>
+                <div class="link">
+                    Нет аккаунта? <a href="#" class="switch-link" data-target="register">Зарегистрироваться</a>
+                </div>
+            </form>
+
+            <form class="form hidden" id="register">
+                <h2>Создать аккаунт</h2>
+                <p class="subtitle">Начните пользоваться прямо сейчас</p>
+                <div class="input-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="reg-name" placeholder="Имя" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="reg-email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="reg-password" placeholder="Пароль" required>
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="reg-password-confirm" placeholder="Повторите пароль" required>
+                </div>
+                <button type="submit" class="btn">Зарегистрироваться</button>
+                <div class="link">
+                    Уже есть аккаунт? <a href="#" class="switch-link" data-target="login">Войти</a>
+                </div>
+            </form>
+        </div>
+
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Вернуться на главную</a>
+    </div>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        // Particles.js configuration
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 60, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#00f0ff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3, "random": true },
+                "size": { "value": 2, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#00f0ff", "opacity": 0.1, "width": 1 },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.3 } }, "push": { "particles_nb": 4 } }
+            },
+            "retina_detect": true
+        });
+
+        // Form toggle logic
+        const toggleBtns = document.querySelectorAll('.toggle-btn');
+        const forms = document.querySelectorAll('.form');
+        const switchLinks = document.querySelectorAll('.switch-link');
+        const wrapper = document.querySelector('.form-wrapper');
+        const container = document.querySelector('.container');
+
+        function adjustHeight() {
+            const activeForm = document.querySelector('.form.active');
+            if (!activeForm) return;
+            const contentHeight = activeForm.scrollHeight;
+            wrapper.style.height = contentHeight + 'px';
+            container.style.minHeight = (contentHeight + 180) + 'px';
+        }
+
+        function showForm(target) {
+            forms.forEach(f => {
+                f.classList.remove('active');
+                f.classList.add('hidden');
+            });
+            toggleBtns.forEach(b => b.classList.remove('active'));
+
+            const form = document.getElementById(target);
+            form.classList.remove('hidden');
+            form.classList.add('active');
+
+            document.querySelector(`[data-form="${target}"]`).classList.add('active');
+
+            setTimeout(adjustHeight, 100);
+        }
+
+        toggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => showForm(btn.dataset.form));
+        });
+
+        switchLinks.forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                showForm(link.dataset.target);
+            });
+        });
+
+        window.addEventListener('load', adjustHeight);
+        window.addEventListener('resize', adjustHeight);
+
+        // Login form handler
+        document.getElementById('login').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const name = email.split('@')[0];
+            const displayName = name.charAt(0).toUpperCase() + name.slice(1);
+            
+            // Save user data to localStorage
+            localStorage.setItem('userName', displayName);
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('isLoggedIn', 'true');
+            
+            // Redirect to dashboard
+            window.location.href = 'uderdashbord.html';
+        });
+
+        // Register form handler
+        document.getElementById('register').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('reg-name').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+            const passwordConfirm = document.getElementById('reg-password-confirm').value;
+            
+            if (password !== passwordConfirm) {
+                alert('Пароли не совпадают!');
+                return;
+            }
+            
+            // Save user data to localStorage
+            localStorage.setItem('userName', name);
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('isLoggedIn', 'true');
+            
+            // Redirect to dashboard
+            window.location.href = 'uderdashbord.html';
+        });
+    </script>
+</body>
+</html>
